@@ -16,7 +16,7 @@ public class Student {
 	
 //	@Size(min=2, max=30, message="hobby must be described between {min} to {max} words")
 	@Size(min=2, max=30) //error message specified in properties file
-	@IsValidHobby
+	@IsValidHobby(listOfValidHobbies="Music|Cricket")
 	private String studentHobby;
 	
 	@Max(2222)
