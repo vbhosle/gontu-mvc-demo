@@ -1,6 +1,7 @@
 package com.gontuseries.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,9 +13,13 @@ import com.gontuseries.model.Student;
 @Controller
 public class StudentAdmissionController {
 	
+	@ModelAttribute
+	public void addingCommonObjects(Model model) {
+		model.addAttribute("headerMsg", "Gontu Tutorials");
+	}
+	
 	@RequestMapping(value="/admissionForm", method= {RequestMethod.GET})
 	public ModelAndView getAdmissionForm() {
-		System.out.println("hello");
 		ModelAndView modelAndView = new ModelAndView("admissionForm");
 		return modelAndView;
 	}
@@ -27,7 +32,6 @@ public class StudentAdmissionController {
 	) 
 	{
 		ModelAndView modelAndView = new ModelAndView("admissionSubmitted");
-		modelAndView.addObject("headerMsg", "Gontu Tutorials");
 		return modelAndView;
 	}
 }

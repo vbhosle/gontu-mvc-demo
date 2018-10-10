@@ -7,6 +7,7 @@
 <title>Admission</title>
 </head>
 <body>
+	<h2>${headerMsg}</h2>
 	<form action="/gontu-mvc-demo/submitAdmissionForm" method="POST">
 		Student's name:<br> <input type="text" name="studentName"><br>
 		Student's hobby:<br> <input type="text" name="studentHobby"><br>
