@@ -11,6 +11,15 @@
 	<form action="/gontu-mvc-demo/submitAdmissionForm" method="POST">
 		Student's name:<br> <input type="text" name="studentName"><br>
 		Student's hobby:<br> <input type="text" name="studentHobby"><br>
+		Student's mobile:<br> <input type="text" name="studentMobile"><br>
+		Student's dob:<br> <input type="text" name="studentDOB"><br>
+		Student's skills:<br> 
+		<select name="studentSkills" multiple="multiple">
+			<option value="Java">Java</option>
+			<option value="Spring">Spring</option>
+			<option value="Hibernate">Hibernate</option>
+		</select>
+		<br>
 		<button type="submit">Submit</button>
 	</form>
 </body>

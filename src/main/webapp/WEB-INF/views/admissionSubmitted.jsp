@@ -10,5 +10,8 @@
 	<h2>${headerMsg}</h2>
 	<p>Student name: ${studentDetails.studentName}</p>
 	<p>Student hobby: ${studentDetails.studentHobby}</p>
+	<p>Student Mobile: ${studentDetails.studentMobile}</p>
+	<p>Student DOB: ${studentDetails.studentDOB}</p>
+	<p>Student Skills: ${studentDetails.studentSkills}</p>
 </body>
 </html>

@@ -15,6 +15,7 @@ public class StudentAdmissionController {
 	
 	@ModelAttribute
 	public void addingCommonObjects(Model model) {
+		//automatically binds all request paramters
 		model.addAttribute("headerMsg", "Gontu Tutorials");
 	}
 	
