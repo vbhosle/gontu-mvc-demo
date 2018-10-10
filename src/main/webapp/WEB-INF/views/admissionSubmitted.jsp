@@ -7,6 +7,8 @@
 <title>Spring MVC Demo</title>
 </head>
 <body>
-	<h2>${msg}</h2>
+	<h2>${headerMsg}</h2>
+	<p>Student name: ${studentDetails.studentName}</p>
+	<p>Student hobby: ${studentDetails.studentHobby}</p>
 </body>
 </html>
