@@ -9,7 +9,8 @@ public class Student {
 
 	private String studentName;
 	
-	@Size(min=2, max=30)
+//	@Size(min=2, max=30, message="hobby must be described between {min} to {max} words")
+	@Size(min=2, max=30) //error message specified in properties file
 	private String studentHobby;
 	private Long studentMobile;
 	private Date studentDOB;
