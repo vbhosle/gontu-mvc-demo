@@ -1,8 +1,13 @@
 package com.gontuseries.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,6 +18,12 @@ import com.gontuseries.model.Student;
 
 @Controller
 public class StudentAdmissionController {
+	
+	public void initBinder(WebDataBinder binder) {
+		binder.setDisallowedFields(new String[] {"studentMobile"});
+		SimpleDateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
+		binder.registerCustomEditor(Date.class,"studentDOB", new CustomDateEditor(dateFormat, false));
+	}
 	
 	@ModelAttribute
 	public void addingCommonObjects(Model model) {
