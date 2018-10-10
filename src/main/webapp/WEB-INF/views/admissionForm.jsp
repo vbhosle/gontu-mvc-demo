@@ -20,6 +20,11 @@
 			<option value="Hibernate">Hibernate</option>
 		</select>
 		<br>
+		<h4>Address</h4>
+		Country:<input type="text" name="studentAddress.country"><br>
+		City:<input type="text" name="studentAddress.city"><br>
+		Street:<input type="text" name="studentAddress.street"><br>
+		PinCode:<input type="number" name="studentAddress.pincode"><br>
 		<button type="submit">Submit</button>
 	</form>
 </body>
