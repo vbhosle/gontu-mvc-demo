@@ -2,6 +2,7 @@ package com.gontuseries.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,9 +30,15 @@ public class StudentAdmissionController {
 	public ModelAndView submitAdmissionForm(
 //			@RequestParam("studentName") String name,
 //			@RequestParam("studentHobby") String hobby
-			@ModelAttribute("studentDetails") Student student
+			@ModelAttribute("studentDetails") Student student,
+			BindingResult result
 	) 
 	{
+		if(result.hasErrors()) {
+			//redirect to the form
+			ModelAndView modelAndView = new ModelAndView("admissionForm");
+			return modelAndView;
+		}
 		ModelAndView modelAndView = new ModelAndView("admissionSubmitted");
 		return modelAndView;
 	}
