@@ -15,10 +15,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.gontuseries.validator.IsValidHobby;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties({"studentSkills", "studentAddress"})
+//@JsonIgnoreProperties({"studentSkills", "studentAddress"})
 @JsonPropertyOrder({"student_name","studentDOB", "studentMobile", "studentAddress", "studentHobby", "studentSkills"})
 public class Student {
-	@JsonProperty("student_name")
+//	@JsonProperty("student_name")
 	@Pattern(regexp="[^0-9]*")
 	private String studentName;
 	
