@@ -11,6 +11,7 @@
 <body>
 	<h2>${headerMsg}</h2>
 	<h3><spring:message code="label.admissionForm" /></h3>
+	<a href="/gontu-mvc-demo/admissionForm?siteLanguage=en">English</a>|<a href="/gontu-mvc-demo/admissionForm?siteLanguage=es">Spanish</a>
 	<form:errors path="studentDetails.*"/>
 	<form action="/gontu-mvc-demo/submitAdmissionForm" method="POST">
 		<spring:message code="label.studentName" />:<br> <input type="text" name="studentName"><br>

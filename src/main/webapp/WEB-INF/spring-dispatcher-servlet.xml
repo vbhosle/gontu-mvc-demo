@@ -13,6 +13,9 @@
 			<mvc:mapping path="/admissionForm"/>
 			<bean class="com.gontuseries.interceptors.DayOfWeekBasedAccessInterceptor" />
 		</mvc:interceptor>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="siteLanguage"/>
+		</bean>
 	</mvc:interceptors>
 	
 	<bean id="HandlerMapping"
@@ -31,4 +34,6 @@
 	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="/WEB-INF/properties/studentmessages" />
 	</bean>
+	
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
 </beans>
