@@ -25,6 +25,7 @@ public class StudentAdmissionController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
+		System.out.println("StudentAdmissionController: InitBinder");
 		binder.setDisallowedFields(new String[] {"studentMobile"});
 		SimpleDateFormat dateFormat = new SimpleDateFormat("mm/dd/yyyy");
 		binder.registerCustomEditor(Date.class,"studentDOB", new CustomDateEditor(dateFormat, false));
@@ -34,11 +35,13 @@ public class StudentAdmissionController {
 	@ModelAttribute
 	public void addingCommonObjects(Model model) {
 		//automatically binds all request paramters
+		System.out.println("StudentAdmissionController: addingCommonObjects");
 		model.addAttribute("headerMsg", "Gontu Tutorials");
 	}
 	
 	@RequestMapping(value="/admissionForm", method= {RequestMethod.GET})
 	public ModelAndView getAdmissionForm() {
+		System.out.println("StudentAdmissionController: getAdmissionForm");
 		ModelAndView modelAndView = new ModelAndView("admissionForm");
 		return modelAndView;
 	}
@@ -51,6 +54,8 @@ public class StudentAdmissionController {
 			BindingResult result
 	) 
 	{
+		System.out.println("StudentAdmissionController: submitAdmissionForm");
+
 		if(result.hasErrors()) {
 			//redirect to the form
 			ModelAndView modelAndView = new ModelAndView("admissionForm");

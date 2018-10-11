@@ -9,7 +9,10 @@
 	<context:component-scan base-package="com.gontuseries.controller" />
 	<mvc:annotation-driven />
 	<mvc:interceptors>
-		<bean class="com.gontuseries.interceptors.DayOfWeekBasedAccessInterceptor" />
+		<mvc:interceptor>
+			<mvc:mapping path="/admissionForm"/>
+			<bean class="com.gontuseries.interceptors.DayOfWeekBasedAccessInterceptor" />
+		</mvc:interceptor>
 	</mvc:interceptors>
 	
 	<bean id="HandlerMapping"

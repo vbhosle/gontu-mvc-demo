@@ -5,6 +5,6 @@
 	<br/>
 	<a href="annotations/welcome/India/Viraj">Annotations Controller</a>
 	<br/>
-	<a href="admissionForm">Annotations Controller</a>
+	<a href="admissionForm">Admission Form</a>
 </body>
 </html>
