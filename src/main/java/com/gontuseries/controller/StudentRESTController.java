@@ -2,6 +2,7 @@ package com.gontuseries.controller;
 
 import java.util.ArrayList;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,7 +15,7 @@ import com.gontuseries.model.Student;
 public class StudentRESTController {
 
 	//@ResponseBody //no need of it with RestController annotation
-	@RequestMapping(value="/students",  method = {RequestMethod.GET})
+	@RequestMapping(value="/students",  method = {RequestMethod.GET}, produces= {MediaType.APPLICATION_JSON_VALUE})
 	public ArrayList<Student> getStudentsList(){
 		Student student1 = new Student();
 		student1.setStudentName("Raj");
