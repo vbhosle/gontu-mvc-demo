@@ -3,6 +3,7 @@ package com.gontuseries.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -30,9 +31,11 @@ public class StudentRESTController {
 	@RequestMapping(value="/students/{name}",  method = {RequestMethod.GET})
 	public ResponseEntity<Student> getStudent(@PathVariable("name") String studentName) {
 		Student student = studentService.getStudentByName(studentName);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("customHeader", "customHeaderValue");
 		if(student == null)
-			return new ResponseEntity<Student>(student, HttpStatus.NOT_FOUND);
-		return new ResponseEntity<Student>(student, HttpStatus.OK);
+			return new ResponseEntity<Student>(student, headers, HttpStatus.NOT_FOUND);
+		return new ResponseEntity<Student>(student, headers, HttpStatus.OK);
 		
 	}
 	
