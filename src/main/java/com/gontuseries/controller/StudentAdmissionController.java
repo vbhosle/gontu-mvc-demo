@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -64,9 +65,19 @@ public class StudentAdmissionController {
 			ModelAndView modelAndView = new ModelAndView("admissionForm");
 			return modelAndView;
 		}
+		System.out.println("StudentName=" + student.getStudentName().trim().length());
+		if(student.getStudentName() == null || student.getStudentName().trim().length()==3) //Mr. or Ms. only
+			throw new NullPointerException();
+		if(student.getStudentAddress().getCountry()==null || student.getStudentAddress().getCountry().length()==0)
+			throw new IllegalArgumentException();
 		ModelAndView modelAndView = new ModelAndView("admissionSubmitted");
 		return modelAndView;
 	}
 	
+	@ExceptionHandler(value=NullPointerException.class)
+	public String handleNullPointerException(Exception e) {
+		System.out.println("NullPointerException " + e);
+		return "errors/NullPointerException";
+	}
 	
 }
