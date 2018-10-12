@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.gontuseries.model.Student;
 import com.gontuseries.services.StudentService;
@@ -47,5 +48,24 @@ public class StudentRESTController {
 		//update the student record
 		student.setStudentName(studentName);
 		return studentService.updateStudent(student);
+	}
+	
+	@RequestMapping(value="/students",  method = {RequestMethod.POST})
+	public ResponseEntity<Boolean> addStudent(@RequestBody Student student) {
+		boolean result = studentService.addStudent(student);
+		if(result) {
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("location", ServletUriComponentsBuilder
+									.fromCurrentRequest()
+									.path("/{name}")
+									.buildAndExpand(student.getStudentName())
+									.toUri()
+									.toString()
+					);
+			return new ResponseEntity<Boolean>(result, headers, HttpStatus.CREATED);
+		}
+		
+		return new ResponseEntity<Boolean>(result, HttpStatus.CONFLICT);
+		
 	}
 }
