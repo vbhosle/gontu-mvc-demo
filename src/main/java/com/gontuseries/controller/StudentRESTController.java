@@ -22,7 +22,7 @@ public class StudentRESTController {
 	private StudentService studentService;
 	
 	//@ResponseBody //no need of it with RestController annotation
-	@RequestMapping(value="/students",  method = {RequestMethod.GET}, produces= {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value="/students",  method = {RequestMethod.GET}, produces= {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
 	public List<Student> getStudentsList(){
 		return studentService.getAllStudents();
 	}
@@ -32,7 +32,7 @@ public class StudentRESTController {
 		return studentService.getStudentByName(studentName);
 	}
 	
-	@RequestMapping(value="/students/{name}", method = {RequestMethod.PUT})
+	@RequestMapping(value="/students/{name}", method = {RequestMethod.PUT}, consumes= { MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
 	public boolean updateStudent(@PathVariable("name") String studentName, @RequestBody Student student) {
 		System.out.println("Student update received for: " + studentName);
 		System.out.println("Student name: " + student.getStudentName() + ", Student Hobby: " + student.getStudentHobby());
