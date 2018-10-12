@@ -68,4 +68,15 @@ public class StudentRESTController {
 		return new ResponseEntity<Boolean>(result, HttpStatus.CONFLICT);
 		
 	}
+	
+	@RequestMapping(value="/students/{name}", method = {RequestMethod.DELETE})
+	public ResponseEntity<Void> deleteStudent(@PathVariable("name") String studentName) {
+		System.out.println("Student delete received for: " + studentName);
+		boolean result = studentService.deleteStudent(studentName);
+		if(result) {
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		}
+		
+		return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
+	}
 }

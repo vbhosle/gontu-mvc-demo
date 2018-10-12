@@ -52,10 +52,10 @@ public class StudentService {
 		return true;
 	}
 	
-	public boolean deleteStudent(Student student) {
-		if(student == null || student.getStudentName() == null || students.get(student.getStudentName())==null)
+	public boolean deleteStudent(String name) {
+		if(name == null || students.get(name)==null)
 			return false;
-		students.remove(student.getStudentName());
+		students.remove(name);
 		return true;
 	}
 	
