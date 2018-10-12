@@ -37,4 +37,20 @@
 	
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
 	<bean id="studentService" class="com.gontuseries.services.StudentService" />
+	
+	<bean id="simpleMappingExceptionResolver" 
+			class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<map>
+				<entry key="NullPointerException" value="errors/NullPointerException" />
+				<entry key="IOException" value="errors/IOException" />
+			</map>
+		</property>		
+		
+		<!-- Default error page for generic exceptions -->
+		<property name="defaultErrorView" value="errors/InternalServerError" />
+		
+		<!-- enable exception logging -->
+		<property name="warnLogCategory" value="MVCLogger" />
+ 	</bean>
 </beans>
